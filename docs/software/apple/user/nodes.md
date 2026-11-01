@@ -106,7 +106,7 @@ Changing the radio's preset, region or frequency slot moves it to a different ch
 
 A node the radio has not heard shows **Not heard on current LoRa** under its last-heard time. That is separate from online and offline: a node can be online and still not heard on these settings. Nodes known only over MQTT are never marked, because they don't reach your radio over LoRa. Switching back to the earlier settings brings back the earlier answers on their own.
 
-When most of the list is in that state, the Nodes tab shows a notice such as **87 nodes not heard on your current LoRa settings**. Choose **Remove Them** to open a confirmation that includes the number of nodes, such as **Remove 1 node?** or **Remove 10 nodes?**. Confirming removes those nodes from this app and the connected radio, and keeps favorites and the connected node. A node returns if it is heard again. Choose **Keep** to dismiss the notice until more nodes join that count. Nothing is removed unless you choose to.
+When most of the list is in that state, the Nodes tab shows a notice such as **87 nodes not heard on your current LoRa settings**. Choose **Remove Them** to open a confirmation that includes the number of nodes, such as **Remove 1 node?** or **Remove 10 nodes?**. Confirming removes those nodes from this app and the connected radio, and keeps favorites and the connected node. A node returns if it is heard again. Choose **Keep** to dismiss the notice until most of the list is heard again; it comes back the next time a change leaves most of the list unheard. Nothing is removed unless you choose to.
 
 Older firmware doesn't report this, so the marker and the notice don't appear.
 
@@ -119,13 +119,15 @@ Long-press any node in the list to access quick actions:
 - **Status Message** — set the status your radio broadcasts to the mesh (connected node only, firmware 2.8+)
 - **Mute notifications / Unmute** — silence alerts from this node
 - **Message** — open a direct message conversation with this node
-- **Trace Route** — discover the path messages take to reach this node
+- **Trace Route** — discover the path messages take to reach this node (see [Trace Routes](traceroute.md))
 - **Ignore / Remove from ignored** — hide this node from normal views
 - **Remove** — remove the node from your local database
 
+Open a node and choose **Track in Live Activity** to keep it on your Lock Screen and in the Dynamic Island: its battery, signal, when it was last heard and how far away it is. See [Live Activity](bluetooth.md#live-activity).
+
 ## Display Names
 
-You can give any node a local nickname that's shown throughout the app instead of its device long name — in the node list, node details, and messages. Set it from the node's long-press menu ("Display name") or from the **Name** row in Node Detail. The avatar circle always shows the node's actual short code, unaffected by the nickname.
+You can give any node a local nickname that's shown throughout the app instead of its device long name — in the node list, node details, and messages. Set it from the node's long-press menu ("Display name") or from the **Name** row in Node Detail. The avatar circle always shows the node's actual short code, unaffected by the nickname. While a display name is set, Node Detail also shows the node's real long name in a **Long Name** row under **Name**.
 
 Display names are stored only on this device and are never sent over the mesh, shared, or exported — they don't change the node's real identity, so QR codes and contact sharing still use the device's actual name.
 
@@ -165,7 +167,7 @@ Tap a node and scroll to the Logs section for detailed metrics:
 | ![Positions](/img/apple/logPositions.webp) | GPS position data including latitude, longitude, and altitude. |
 | ![Environment](/img/apple/logEnvironment.webp) | Sensor data: temperature, humidity, barometric pressure. |
 | ![Detection Sensor](/img/apple/logDetectionSensor.webp) | Motion or door open/close alerts from the node. |
-| ![Trace Routes](/img/apple/logTraceRoutes.webp) | Recorded trace route paths showing the hops a message took through the mesh. |
+| ![Trace Routes](/img/apple/logTraceRoutes.webp) | Recorded trace route paths showing the hops a message took through the mesh, with a chart and a hop-by-hop timeline. See [Trace Routes](traceroute.md). |
 
 When a node has a known position, the Logs section also offers **Estimate Coverage** (`cellularbars`). It switches to the Map tab and opens the Site Planner coverage-estimate form prefilled from that node. See [Coverage Estimate (Site Planner)](map.md) on the Map page for the full flow.
 
@@ -223,6 +225,7 @@ The hardware section shows information about the physical device running the nod
 | Status | Meaning |
 |--------|---------|
 | **Supported Hardware** | Device is actively supported with firmware updates. |
+| **Maker Hardware** | Independent maker hardware that is built and tested, but not Backer or Partner hardware. |
 | **Discontinued Hardware** | Device is no longer supported and does not receive firmware updates. |
 
 For supported devices, the support tier is shown below the hardware name:
@@ -232,6 +235,10 @@ For supported devices, the support tier is shown below the hardware name:
 | Flagship | Recommended device with full feature support and active development. |
 | Niche | Supported device with active firmware updates and a specialised form factor. |
 | Legacy | Older device that still receives firmware updates but may lack some features. |
+
+### 3D Model
+
+For many radios, the hardware image can turn into a 3D model of the device: tap the image, or the rotate button on it. Drag to turn the model and pinch to zoom; the photo button switches back to the picture. On iPhones and iPads that support augmented reality, and on Apple Vision Pro, the AR button places the model in the room around you at its real size. Most models ship with the app and work offline; any that don't are downloaded the first time they're shown.
 
 ### Where to Buy
 
